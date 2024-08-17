@@ -1,0 +1,57 @@
+[package]
+name = "Todo"
+authors = ["Zamokuhle Shozi"]
+version = "0.1.0"
+edition = "2021"
+
+[lints.clippy]
+too_many_arguments = "allow"
+type_complexity = "warn"
+needless_return = "warn"
+unwrap_used = "deny"
+expect_used = "deny"
+clone_on_ref_ptr = "forbid"
+cognitive_complexity = "warn"
+large_enum_variant = "warn"
+trivially_copy_pass_by_ref = "warn"
+wildcard_imports = "deny"
+semicolon_if_nothing_returned = "warn"
+
+
+[lints.rust]
+unsafe_code = "forbid"
+dead_code = "warn"
+unused_imports = "warn"
+unused_variables = "warn"
+unused_mut = "warn"
+missing_copy_implementations = "warn"
+missing_debug_implementations = "warn"
+
+
+[dependencies]
+# async
+tokio = { version = "1", features = ["full"] }
+# database
+sqlx = { version = "=0.7.4", features = ["sqlite", "runtime-tokio", "migrate", "macros"] }
+modql = { version = "=0.4.0-rc.7", features = ["modql-macros", "with-sea-query"] }
+sea-query = "=0.31.0-rc.7"
+sea-query-binder = { version = "0.6.0-rc", features = ["sqlx-sqlite", "with-uuid", "with-chrono"] }
+uuid = { version = "1", features = ["serde", "fast-rng", "v7"] }
+# time
+chrono = { version = "0.4.38", features = ["serde"] }
+# http
+axum = { version = "0.7.5", features = ["tracing"] }
+tracing = { version = "0.1.40" }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+tower-http = { version = "0.5.2", features = ["cors", "trace"] }
+# json
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1" }
+# error
+thiserror = { version = "1" }
+anyhow = { version = "1" }
+derive_more = { version = "1", features = ["from", "display", "as_ref"] }
+# utils
+env-config = { version = "0.2.0" }
+doc-writer = { version = "0.2.0" }
+getset = { version = "0.1.2" }

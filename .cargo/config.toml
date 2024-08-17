@@ -1,0 +1,4 @@
+[env]
+RUST_LOG = "tower_http=debug,todo=debug"
+DATABASE_URL = "sqlite://sqlite.db"
+PORT = "3000"
