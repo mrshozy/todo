@@ -1,9 +1,15 @@
 use crate::pkg::{
     handlers::handlers_router,
-    router::{cors::cors_layer, tracing::tracing},
+    router::{
+        cors::cors_layer,
+        tracing::tracing,
+    },
     state::TodoState,
 };
-use axum::{Extension, Router};
+use axum::{
+    Extension,
+    Router,
+};
 
 mod cors;
 mod tracing;

@@ -4,7 +4,12 @@ pub mod get;
 pub mod update;
 
 use modql::SIden;
-use sea_query::{DynIden, Iden, IntoIden, TableRef};
+use sea_query::{
+    DynIden,
+    Iden,
+    IntoIden,
+    TableRef,
+};
 
 #[derive(Iden)]
 pub enum CommonIden {

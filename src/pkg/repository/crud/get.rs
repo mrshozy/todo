@@ -1,12 +1,25 @@
 use crate::pkg::repository::{
-    crud::{CommonIden, DbBmc},
-    error::{DatabaseError, DatabaseResult},
+    crud::{
+        CommonIden,
+        DbBmc,
+    },
+    error::{
+        DatabaseError,
+        DatabaseResult,
+    },
     manager::ModelManager,
 };
 use modql::field::HasSeaFields;
-use sea_query::{Expr, Query, SqliteQueryBuilder};
+use sea_query::{
+    Expr,
+    Query,
+    SqliteQueryBuilder,
+};
 use sea_query_binder::SqlxBinder;
-use sqlx::{sqlite::SqliteRow, FromRow};
+use sqlx::{
+    sqlite::SqliteRow,
+    FromRow,
+};
 
 pub async fn get<MC, E>(mm: &ModelManager, id: String) -> DatabaseResult<E>
 where
@@ -22,9 +35,7 @@ where
     let (sql, values) = query.build_sqlx(SqliteQueryBuilder);
     let sqlx_query = sqlx::query_as_with::<_, E, _>(&sql, values);
     match sqlx_query.fetch_optional(mm.get_pool()).await? {
-        None => Err(DatabaseError::NotFound {
-            message: format!("Id not found: {}", id),
-        }),
+        None => Err(DatabaseError::NotFound { message: format!("Id not found: {}", id) }),
         Some(data) => Ok(data),
     }
 }

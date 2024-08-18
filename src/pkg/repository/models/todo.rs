@@ -1,7 +1,15 @@
-use crate::pkg::repository::{crud, crud::DbBmc, error::DatabaseResult, manager::ModelManager};
+use crate::pkg::repository::{
+    crud,
+    crud::DbBmc,
+    error::DatabaseResult,
+    manager::ModelManager,
+};
 use chrono::NaiveDateTime;
 use modql::field::Fields;
-use serde::{Deserialize, Serialize};
+use serde::{
+    Deserialize,
+    Serialize,
+};
 use sqlx::FromRow;
 use uuid::Uuid;
 
@@ -62,13 +70,7 @@ impl UpdateTodo {
         priority: i32,
         completed: bool,
     ) -> Self {
-        Self {
-            completed,
-            title,
-            priority,
-            due_date,
-            description,
-        }
+        Self { completed, title, priority, due_date, description }
     }
 }
 

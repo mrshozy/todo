@@ -1,7 +1,16 @@
-use crate::{pkg::repository::error::DatabaseError, preludes::log};
+use crate::{
+    pkg::repository::error::DatabaseError,
+    preludes::log,
+};
 use axum::{
-    http::{header::CONTENT_TYPE, StatusCode},
-    response::{IntoResponse, Response},
+    http::{
+        header::CONTENT_TYPE,
+        StatusCode,
+    },
+    response::{
+        IntoResponse,
+        Response,
+    },
     Json,
 };
 use derive_more::Display;
@@ -42,9 +51,7 @@ impl ApiError {
             ApiError::DatabaseError(e) => match e {
                 DatabaseError::Duplicate { message } => {
                     let duplicate = message.split(": ").last().map(|v| {
-                        v.split(", ")
-                            .flat_map(|x| x.split(".").last())
-                            .collect::<Vec<_>>()
+                        v.split(", ").flat_map(|x| x.split(".").last()).collect::<Vec<_>>()
                     });
 
                     let formatted_message = match duplicate {

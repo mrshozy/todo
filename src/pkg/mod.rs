@@ -6,4 +6,7 @@ pub mod router;
 pub mod server;
 pub mod state;
 
-pub use repository::{establish_connection, todo_migration};
+pub use repository::{
+    establish_connection,
+    todo_migration,
+};

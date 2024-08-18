@@ -1,4 +1,9 @@
-use axum::{http::StatusCode, response::IntoResponse, routing::get, Router};
+use axum::{
+    http::StatusCode,
+    response::IntoResponse,
+    routing::get,
+    Router,
+};
 
 pub fn ping_router() -> Router {
     Router::new().route("/", get(ping))

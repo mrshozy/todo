@@ -1,8 +1,8 @@
-use tower_http::cors::{Any, CorsLayer};
+use tower_http::cors::{
+    Any,
+    CorsLayer,
+};
 
 pub fn cors_layer() -> CorsLayer {
-    CorsLayer::new()
-        .allow_methods(Any)
-        .allow_origin(Any)
-        .allow_headers(Any)
+    CorsLayer::new().allow_methods(Any).allow_origin(Any).allow_headers(Any)
 }
