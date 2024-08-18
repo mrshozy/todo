@@ -1,12 +1,6 @@
-use crate::pkg::repository::models::todo::{
-    CreateTodo,
-    UpdateTodo,
-};
+use crate::pkg::repository::models::todo::{CreateTodo, UpdateTodo};
 use chrono::NaiveDateTime;
-use serde::{
-    Deserialize,
-    Serialize,
-};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ApiCreateTodo {
@@ -27,7 +21,12 @@ pub struct ApiUpdateTodo {
 
 impl From<ApiCreateTodo> for CreateTodo {
     fn from(value: ApiCreateTodo) -> Self {
-        CreateTodo::new(value.title, value.description, value.due_date, value.priority)
+        CreateTodo::new(
+            value.title,
+            value.description,
+            value.due_date,
+            value.priority,
+        )
     }
 }
 

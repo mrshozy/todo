@@ -1,0 +1,9 @@
+services:
+  todo:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - RUST_LOG=tower_http=debug,todo=debug
+      - DATABASE_URL=sqlite://sqlite.db
+      - PORT=3000

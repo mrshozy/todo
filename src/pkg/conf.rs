@@ -1,9 +1,6 @@
 pub extern crate env_config;
 pub use env_config::*;
-use getset::{
-    CopyGetters,
-    Getters,
-};
+use getset::{CopyGetters, Getters};
 
 #[derive(EnvConfig, Debug, Clone, Getters, CopyGetters)]
 pub struct Config {

@@ -1,24 +1,14 @@
 use crate::pkg::{
     handlers::error::ApiResult,
-    models::todo::{
-        ApiCreateTodo,
-        ApiUpdateTodo,
-    },
+    models::todo::{ApiCreateTodo, ApiUpdateTodo},
     repository::models::todo::TodoBmc,
     state::TodoState,
 };
 use axum::{
     extract::Path,
     response::IntoResponse,
-    routing::{
-        delete,
-        get,
-        post,
-        put,
-    },
-    Extension,
-    Json,
-    Router,
+    routing::{delete, get, post, put},
+    Extension, Json, Router,
 };
 use serde_json::json;
 

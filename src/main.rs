@@ -1,22 +1,13 @@
 pub extern crate tracing;
 use crate::{
     pkg::{
-        establish_connection,
-        router::create_router,
-        server::serve_forever,
-        state::TodoState,
+        establish_connection, router::create_router, server::serve_forever, state::TodoState,
         todo_migration,
     },
-    preludes::{
-        TodoError,
-        TodoResult,
-    },
+    preludes::{TodoError, TodoResult},
 };
 use pkg::conf::Config;
-use tracing_subscriber::{
-    fmt,
-    EnvFilter,
-};
+use tracing_subscriber::{fmt, EnvFilter};
 mod macros;
 mod pkg;
 mod preludes;
@@ -28,8 +19,10 @@ const APPLICATION_NAME: &str = "todo";
 async fn main() -> TodoResult<()> {
     init_logger()?;
     log!(info, "Initializing environment variables");
-    let config = Config::from_env(std::env::vars())
-        .map_err(|e| TodoError::EnvironmentVariable { message: e.to_string() })?;
+    let config =
+        Config::from_env(std::env::vars()).map_err(|e| TodoError::EnvironmentVariable {
+            message: e.to_string(),
+        })?;
     let pool = establish_connection(config.get_database_url()).await?;
     log!(info, "connected to database");
     todo_migration(&pool).await?;

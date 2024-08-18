@@ -10,6 +10,8 @@ pub struct TodoState {
 
 impl TodoState {
     pub fn new(pool: SqlitePool) -> Self {
-        Self { manager: ModelManager::new(pool) }
+        Self {
+            manager: ModelManager::new(pool),
+        }
     }
 }
